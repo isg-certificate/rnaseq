@@ -44,7 +44,7 @@ hisat2 \
 	-1 ${INDIR}/${SAMPLE}_trim_1.fastq.gz \
 	-2 ${INDIR}/${SAMPLE}_trim_2.fastq.gz | \
 samtools view -@ 1 -S -h -u - | \
-samtools sort -@ 1 -T ${SAMPLE} - >${OUTDIR}/${SAMPLE}.bam
+samtools sort -@ 1 -T ${OUTDIR}/${SAMPLE} - >${OUTDIR}/${SAMPLE}.bam
 
 # index bam files
 samtools index ${OUTDIR}/${SAMPLE}.bam

@@ -28,7 +28,7 @@ TRIMDIR=../../results/02_qc/trimmed_fastq
 mkdir -p $TRIMDIR
 
 # adapters to trim out
-ADAPTERS=/isg/shared/apps/Trimmomatic/0.39/adapters/TruSeq3-SE.fa
+ADAPTERS=/isg/shared/apps/Trimmomatic/0.39/adapters/TruSeq3-PE-2.fa
 
 # accession list
 ACCLIST=../../metadata/accessionlist.txt
