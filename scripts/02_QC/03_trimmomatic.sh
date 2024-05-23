@@ -30,6 +30,7 @@ mkdir -p $TRIMDIR
 # adapters to trim out
 ADAPTERS=/isg/shared/apps/Trimmomatic/0.39/adapters/TruSeq3-SE.fa
 
+# accession list
 ACCLIST=../../metadata/accessionlist.txt
 
 # run trimmomatic
@@ -42,4 +43,4 @@ java -jar $Trimmomatic PE -threads 4 \
         ${TRIMDIR}/${SAMPLE}_trim_1.fastq.gz ${TRIMDIR}/${SAMPLE}_trim_orphans_1.fastq.gz \
         ${TRIMDIR}/${SAMPLE}_trim_2.fastq.gz ${TRIMDIR}/${SAMPLE}_trim_orphans_2.fastq.gz \
         ILLUMINACLIP:"${ADAPTERS}":2:30:10 \
-        SLIDINGWINDOW:4:25 MINLEN:45
+        SLIDINGWINDOW:4:15 MINLEN:45

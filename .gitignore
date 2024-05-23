@@ -4,3 +4,4 @@
 *.out
 *.err
 .DS_Store
+accessionlist.txt

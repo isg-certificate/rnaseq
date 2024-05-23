@@ -45,4 +45,4 @@ grep -E "Elizabeth River|King's Creek" $METADATA | cut -f 1 -d "," >$ACCLIST
 cat $ACCLIST | parallel -j 2 "fasterq-dump -O ${OUTDIR} {}"
 
 # compress the files 
-ls ${OUTDIR}/*fastq | parallel -j 2 gzip
+ls ${OUTDIR}/*fastq | parallel -j 12 gzip

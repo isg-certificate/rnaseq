@@ -2,8 +2,8 @@
 #SBATCH --job-name=multiqc
 #SBATCH -n 1
 #SBATCH -N 1
-#SBATCH -c 12
-#SBATCH --mem=20G
+#SBATCH -c 2
+#SBATCH --mem=10G
 #SBATCH --partition=general
 #SBATCH --qos=general
 #SBATCH --mail-type=ALL
@@ -20,5 +20,8 @@ date
 
 module load MultiQC/1.15
 
+INDIR=../../results/02_qc/fastqc_reports/
+OUTDIR=../../results/02_qc/multiqc
+
 # run on fastqc output
-multiqc -f -o ../../results/02_qc/multiqc ../../results/02_qc/fastqc_reports/
+multiqc -f -o ${OUTDIR} ${INDIR}
