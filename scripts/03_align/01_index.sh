@@ -25,6 +25,6 @@ module load hisat2/2.2.1
 OUTDIR=../../genome/hisat2_index
 mkdir -p $OUTDIR
 
-GENOME=../../genome/Fundulus_heteroclitus.Fundulus_heteroclitus-3.0.2.dna.toplevel.fa
+GENOME=../../genome/Fundulus_heteroclitus.Fundulus_heteroclitus-3.0.2.dna_sm.toplevel.fa
 
 hisat2-build -p 16 $GENOME $OUTDIR/Fhet
