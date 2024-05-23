@@ -11,14 +11,14 @@
 #SBATCH -o %x_%j.out
 #SBATCH -e %x_%j.err
 
-echo `hostname`
+hostname
 date
 
 #################################################################
 # Download fastq files from SRA 
 #################################################################
 
-# load parallel module
+# load software
 module load parallel/20180122
 module load sratoolkit/3.0.1
 
@@ -26,22 +26,23 @@ module load sratoolkit/3.0.1
     # https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE156460
     # https://www.ncbi.nlm.nih.gov/bioproject/PRJNA658029
 
-# Get a list of SRA accession numbers to download, put them in a file
 
 OUTDIR=../../data/fastq
     mkdir -p ${OUTDIR}
 METADATA=../../metadata/SraRunTable.txt
-ACCLIST=../../metadata/accessionlist.txt
+
+# Get a list of SRA accession numbers to download, put them in a file
 
 # there are 8 populations and 75 samples. 
 # we're going to work only with Elizabeth River and King's Creek in this tutorial
     # the metadata table was downloaded from the SRA's "Run Selector" page. 
 
 # extract rows matching our population names, pull out the SRA accession number (the first column)
+ACCLIST=../../metadata/accessionlist.txt
 grep -E "Elizabeth River|King's Creek" $METADATA | cut -f 1 -d "," >$ACCLIST
 
 # use parallel to download 2 accessions at a time. 
 cat $ACCLIST | parallel -j 2 "fasterq-dump -O ${OUTDIR} {}"
 
 # compress the files 
-ls ${OUTDIR}/*fastq | parallel -j 12 gzip
+ls ${OUTDIR}/*fastq | parallel -j 2 gzip
