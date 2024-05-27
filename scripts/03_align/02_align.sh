@@ -39,11 +39,10 @@ SAMPLE=$(sed -n ${SLURM_ARRAY_TASK_ID}p ${ACCLIST})
 
 # run hisat2
 hisat2 \
-	-p 2 \
+	-p 4 \
 	-x ${INDEX} \
 	-1 ${INDIR}/${SAMPLE}_trim_1.fastq.gz \
 	-2 ${INDIR}/${SAMPLE}_trim_2.fastq.gz | \
-samtools view -@ 1 -S -h -u - | \
 samtools sort -@ 1 -T ${OUTDIR}/${SAMPLE} - >${OUTDIR}/${SAMPLE}.bam
 
 # index bam files

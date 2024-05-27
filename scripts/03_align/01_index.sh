@@ -2,7 +2,7 @@
 #SBATCH --job-name=hisat2_index
 #SBATCH -n 1
 #SBATCH -N 1
-#SBATCH -c 4
+#SBATCH -c 16
 #SBATCH --mem=10G
 #SBATCH --partition=general
 #SBATCH --qos=general
