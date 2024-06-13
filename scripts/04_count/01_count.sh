@@ -20,8 +20,8 @@ date
 module load htseq/0.13.5
 module load parallel/20180122
 
-INDIR=../../03_align/alignments
-OUTDIR=../../04_counts/counts
+INDIR=../../results/03_align/alignments
+OUTDIR=../../results/04_counts/counts
 mkdir -p $OUTDIR
 
 # accession list
